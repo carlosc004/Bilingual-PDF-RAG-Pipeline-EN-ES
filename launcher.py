@@ -38,7 +38,7 @@ def iniciar_sistema():
     
     # 2. Iniciar el Backend (API)
     print("2/3 Lanzando Backend API (Puerto 8001)...")
-    backend = subprocess.Popen(["uvicorn", "main_api:app", "--port", "8001"])
+    backend = subprocess.Popen([sys.executable, "-m", "uvicorn", "main_api:app", "--port", "8001"])
 
     # Esperar a que los servicios estén listos
     print("Esperando a que los servicios estén disponibles...")
@@ -50,7 +50,7 @@ def iniciar_sistema():
     # 3. Iniciar el Frontend (Streamlit)
     print("3/3 Lanzando Interfaz de Usuario...")
     try:
-        subprocess.run(["streamlit", "run", "frontend.py"])
+        subprocess.run([sys.executable, "-m", "streamlit", "run", "frontend.py"])
     except KeyboardInterrupt:
         print("\nCerrando servicios...")
         traductor.terminate()
